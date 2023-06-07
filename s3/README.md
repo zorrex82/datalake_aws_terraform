@@ -50,4 +50,7 @@ No requirements.
 
 ## Outputs
 
-No outputs.
+| Name | Description |
+|------|-------------|
+| <a name="output_app_policy"></a> [app\_policy](#output\_app\_policy) | Access policy for applications. |
+| <a name="output_bucket"></a> [bucket](#output\_bucket) | Bucket information |
