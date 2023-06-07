@@ -8,18 +8,18 @@ variable "region" {
 variable "company" {
   type        = string
   default     = "company"
-  description = "Company name"
+  description = "(Required) Company name"
 }
 
 variable "project" {
   type        = string
-  description = "Project name"
+  description = "(Required) Project name"
   default     = "datalake"
 }
 
 variable "environment" {
   type        = string
-  description = "Environment where the resource should be created."
+  description = "(Required) Environment where the resource should be created."
   validation {
     condition     = contains(["dev", "uat", "prd"], var.environment)
     error_message = "Environment where the resource should be created. Accepted values are: dev, uat, prd"
@@ -28,23 +28,23 @@ variable "environment" {
 
 variable "name" {
   type        = string
-  description = "application name"
+  description = "(Required) application name"
 }
 
 
 variable "crawler_description" {
   type    = string
-  default = "Glue crawler to generate tables in the data catalog."
+  default = "(Optional) Description of the crawler."
 }
 
 variable "database_name" {
   type        = string
-  description = "Glue catalog database."
+  description = "(Required) Glue database where results are written."
 }
 
 variable "glue_role" {
   type        = string
-  description = "IAM role used in Glue's crawlers."
+  description = "(Required) The IAM role friendly name (including path without leading slash), or ARN of an IAM role, used by the crawler to access other resources."
 }
 
 variable "iam_policy_glue" {
@@ -53,4 +53,10 @@ variable "iam_policy_glue" {
     "arn:aws:iam::aws:policy/service-role/AWSGlueServiceRole",
     "arn:aws:iam::aws:policy/AmazonEC2FullAccess"
   ]
+}
+
+variable "s3_target" {
+  type = string
+  description = "(Optional) List nested Amazon S3 target arguments. See S3 Target below."
+  
 }
